@@ -10,59 +10,64 @@
         android:id="@+id/record_header_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="64dp"
-        android:src="@drawable/ic_launcher_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/home_illustration"
+        android:layout_marginTop="64dp"
+        />
 
     <TextView
         android:id="@+id/record_filename"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="@font/open_sans_semibold"
+        android:text="Press the mic button \n to start recording"
+        android:textSize="18sp"
+        android:lineHeight="32dp"
+        android:textColor="@color/colorDarkBlue"
         android:textAlignment="center"
-        android:textSize="20dp"
-        android:lineSpacingExtra="15dp"
-        android:text="Press mic button \nto start recording"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintTop_toBottomOf="@id/record_header_image"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/record_header_image" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="64dp"
+        />
 
     <Chronometer
         android:id="@+id/record_timer"
-        app:layout_constraintTop_toBottomOf="@+id/record_filename"
+        app:layout_constraintTop_toBottomOf="@id/record_filename"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="200dp"
-        android:textSize="40dp"
-        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/open_sans_light"
+        android:textSize="64sp"
+        android:textColor="@color/colorDarkBlue"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/record_btn"
-        app:layout_constraintTop_toBottomOf="@+id/record_timer"
+        android:background="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/record_timer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_launcher_background"
-        android:layout_width="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="15dp"
-        android:layout_height="wrap_content"/>
+        android:src="@drawable/record_btn_stopped"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/record_list_btn"
+        android:background="@android:color/white"
         app:layout_constraintTop_toTopOf="@id/record_btn"
         app:layout_constraintBottom_toBottomOf="@id/record_btn"
         app:layout_constraintStart_toEndOf="@id/record_btn"
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="16dp"
-        android:src="@drawable/ic_launcher_foreground"
+        android:src="@drawable/recorder_list_btn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
