@@ -3,9 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Cyan"
+    android:background="#111111"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".RecordFragment">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.scwang.wave.MultiWaveHeader
+        android:id="@+id/wave_header"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <com.scwang.wave.MultiWaveHeader
+        android:id="@+id/wave_footer"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:scaleY="-1" />
+</RelativeLayout>
 
     <ImageView
         android:id="@+id/record_header_image"
@@ -29,7 +46,7 @@
         android:lineHeight="32dp"
         android:text="Press the mic button \n to start recording"
         android:textAlignment="center"
-        android:textColor="@color/colorDarkBlue"
+        android:textColor="#D50000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +60,7 @@
         android:layout_marginTop="64dp"
         android:fontFamily="@font/open_sans_light"
         android:textSize="64sp"
-        android:textColor="@color/colorDarkBlue"
+        android:textColor="#CD8A8A"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -51,7 +68,7 @@
         android:id="@+id/record_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/Cyan"
+        android:background="@android:color/transparent"
         android:src="@drawable/record_btn_stopped"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +80,7 @@
         android:id="@+id/record_list_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/Cyan"
+        android:background="@android:color/transparent"
         android:padding="16dp"
         android:src="@drawable/recorder_list_btn"
         app:layout_constraintBottom_toBottomOf="@id/record_btn"
