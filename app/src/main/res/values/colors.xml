@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6177FC</color>
-    <color name="colorPrimaryDark">#576EF7</color>
-    <color name="colorAccent">#FF6584</color>
-    <color name="Cyan">#09ECD9</color>
-    <color name="Maroon">#00008b</color>
+    <color name="colorPrimary">#171717</color>
+    <color name="colorPrimaryDark">#171717</color>
+    <color name="colorAccent">#03DAC5</color>
 
-    <color name="colorDarkBlue">#3D4054</color>
+    <color name="dark">#181818</color>
+    <color name="gradient_orange">#FF3B36</color>
+    <color name="gradient_yellow">#FFC600</color>
+    <color name="orange">#FF7600</color>
+
+    <color name="gradient_blue">#3C8CE7</color>
+    <color name="gradient_light_blue">#00EAFF</color>
+    <color name="blue">#00A7FF</color>
+
 </resources>

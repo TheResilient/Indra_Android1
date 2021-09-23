@@ -1,92 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#111111"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/dark"
     tools:context=".RecordFragment">
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <com.scwang.wave.MultiWaveHeader
-        android:id="@+id/wave_header"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-    <com.scwang.wave.MultiWaveHeader
-        android:id="@+id/wave_footer"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentBottom="true"
-        android:scaleY="-1" />
-</RelativeLayout>
-
     <ImageView
-        android:id="@+id/record_header_image"
+        android:id="@+id/app_name"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_voiceme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <com.agrawalsuneet.squareloaderspack.loaders.WaveLoader
+        android:id="@+id/audioRecordView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:wave_animDuration="500"
+        app:wave_delayDuration="100"
+        app:wave_interpolator="@android:anim/linear_interpolator"
+        app:wave_isSingleColor="true"
+        app:wave_noOfDots="18"
+        app:wave_rectColor="@color/blue"
+        app:wave_rectDistance="8dp"
+        app:wave_rectHeight="40dp"
+        app:wave_rectWidth="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/record_filename"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/home_illustration"
-        android:layout_marginTop="64dp"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_name"/>
 
     <TextView
         android:id="@+id/record_filename"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="32dp"
-        android:fontFamily="@font/glegoo"
-        android:lineHeight="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/roboto_light"
         android:text="Press the mic button \n to start recording"
         android:textAlignment="center"
-        android:textColor="#D50000"
+        android:textColor="@android:color/white"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/timer_record"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/record_header_image" />
+        app:layout_constraintTop_toBottomOf="@id/audioRecordView" />
 
     <Chronometer
-        android:id="@+id/record_timer"
-        app:layout_constraintTop_toBottomOf="@id/record_filename"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="64dp"
-        android:fontFamily="@font/open_sans_light"
-        android:textSize="64sp"
-        android:textColor="#CD8A8A"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <ImageButton
-        android:id="@+id/record_btn"
+        android:id="@+id/timer_record"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:src="@drawable/record_btn_stopped"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/blue"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@id/btn_record"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/record_filename" />
+
+    <ImageButton
+        android:id="@+id/btn_record"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_record_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/record_timer"
+        app:layout_constraintTop_toBottomOf="@id/timer_record"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
-        android:id="@+id/record_list_btn"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_record_list"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:padding="16dp"
-        android:src="@drawable/recorder_list_btn"
-        app:layout_constraintBottom_toBottomOf="@id/record_btn"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:padding="18dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_playlist"
+        app:layout_constraintBottom_toBottomOf="@id/btn_record"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/record_btn"
-        app:layout_constraintTop_toTopOf="@id/record_btn"
-        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+        app:layout_constraintStart_toEndOf="@id/btn_record"
+        app:layout_constraintTop_toTopOf="@id/btn_record"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

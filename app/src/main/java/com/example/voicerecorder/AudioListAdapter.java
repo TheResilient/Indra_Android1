@@ -3,7 +3,6 @@ package com.example.voicerecorder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,19 +43,15 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
 
     public class AudioViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private ImageView list_image;
         private TextView list_title;
         private TextView list_date;
 
         public AudioViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            list_image = itemView.findViewById(R.id.list_image_view);
             list_title = itemView.findViewById(R.id.list_title);
             list_date = itemView.findViewById(R.id.list_date);
 
             itemView.setOnClickListener(this);
-
         }
 
         @Override
