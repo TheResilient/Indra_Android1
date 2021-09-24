@@ -24,9 +24,6 @@ import java.io.File;
 import java.io.IOException;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class AudioListFragment extends Fragment implements AudioListAdapter.onItemListClick{
 
     private ConstraintLayout playerSheet;

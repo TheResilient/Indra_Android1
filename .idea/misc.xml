@@ -10,10 +10,12 @@
         <entry key="..\:/DebLok/app/src/main/res/font/open_sans.xml" value="0.28020833333333334" />
         <entry key="..\:/DebLok/app/src/main/res/layout/activity_main.xml" value="0.20153985507246377" />
         <entry key="..\:/DebLok/app/src/main/res/layout/activity_splash.xml" value="0.13934426229508196" />
+        <entry key="..\:/DebLok/app/src/main/res/layout/common_alert_dialog.xml" value="0.1" />
         <entry key="..\:/DebLok/app/src/main/res/layout/fragment_audio_list.xml" value="0.136" />
         <entry key="..\:/DebLok/app/src/main/res/layout/fragment_record.xml" value="0.152" />
         <entry key="..\:/DebLok/app/src/main/res/layout/player_sheet.xml" value="0.24635416666666668" />
-        <entry key="..\:/DebLok/app/src/main/res/layout/single_list_item.xml" value="0.136" />
+        <entry key="..\:/DebLok/app/src/main/res/layout/rename_alert_dialog.xml" value="0.2" />
+        <entry key="..\:/DebLok/app/src/main/res/layout/single_list_item.xml" value="0.1" />
       </map>
     </option>
   </component>

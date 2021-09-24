@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -89,20 +90,52 @@ public class RecordFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_record_list:
-                if (isRecording) {
-                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
-                    alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                if(isRecording){ //if its still in recording
+
+                    //showing an alert dialog
+
+                    // get common_alert_dialog.xml view
+                    final LayoutInflater layoutInflater = LayoutInflater.from(v.getContext());
+
+                    final View promptView = layoutInflater.inflate(R.layout.common_alert_dialog, null);
+
+                    final AlertDialog alertDialogBuilder = new AlertDialog.Builder(v.getContext()).create();
+
+                    // set common_alert_dialog.xml to alertdialog builder
+                    alertDialogBuilder.setView(promptView);
+
+                    Button alertBtnPositive = promptView.findViewById(R.id.commonAlertPosBtn);
+                    Button alertBtnNegative = promptView.findViewById(R.id.commonAlertNegBtn);
+
+                    //doesn't cancel if tap alert dialog excluded area
+                    alertDialogBuilder.setCancelable(false);
+
+                    alertBtnPositive.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            navController.navigate(R.id.action_recordFragment_to_audioListFragment);
+                        public void onClick(View v) {
                             isRecording = false;
+                            stopRecording();
+                            //navigate from RecordFragment to AudioListFragment
+                            navController.navigate(R.id.action_recordFragment_to_audioListFragment);
+
+                            alertDialogBuilder.dismiss();
                         }
                     });
-                    alertDialog.setNegativeButton("No", null);
-                    alertDialog.setTitle("Audio is still recording");
-                    alertDialog.setMessage("Are you sure, you want to stop the recording?");
-                    alertDialog.create().show();
-                } else {
+
+                    alertBtnNegative.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            alertDialogBuilder.cancel();
+                        }
+                    });
+
+                    alertDialogBuilder.setTitle("Audio still recording");
+                    alertDialogBuilder.setMessage("Are you sure, you want to stop the recording");
+                    alertDialogBuilder.show();
+
+
+                }
+                else {
                     navController.navigate(R.id.action_recordFragment_to_audioListFragment);
                 }
                 break;
