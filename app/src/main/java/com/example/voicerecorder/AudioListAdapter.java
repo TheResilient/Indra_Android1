@@ -73,7 +73,7 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
         private Button renameBtn;
         private Button shareBtn;
 
-        private String authorities = "com.simplevoice.android.voicerecorder.fileprovider";
+        private String authorities = "com.example.voicerecorder.fileprovider";
 
         public AudioViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -165,10 +165,10 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
                     listTitle.setText(renamedText);
 
                     //previous file name
-                    File filepath = new File("/storage/emulated/0/Android/data/com.simplevoice.android.voicerecorder/files/" + allFiles[getAdapterPosition()].getName());
+                    File filepath = new File("/storage/emulated/0/Android/data/com.example.voicerecorder/files/" + allFiles[getAdapterPosition()].getName());
 
                     //new renamed file
-                    File renamedPath = new File("/storage/emulated/0/Android/data/com.simplevoice.android.voicerecorder/files/" + renamedText + ".mp3");
+                    File renamedPath = new File("/storage/emulated/0/Android/data/com.example.voicerecorder/files/" + renamedText + ".mp3");
 
                     filepath.renameTo(renamedPath);
 

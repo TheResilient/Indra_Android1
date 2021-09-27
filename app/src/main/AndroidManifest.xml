@@ -24,7 +24,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.simplevoice.android.voicerecorder.fileprovider"
+            android:authorities="com.example.voicerecorder.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
