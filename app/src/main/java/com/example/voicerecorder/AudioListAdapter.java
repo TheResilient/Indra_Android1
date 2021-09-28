@@ -47,7 +47,7 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
     public void onBindViewHolder(@NonNull AudioViewHolder holder, final int position) {
 
 
-        //holder.setIsRecyclable(true); //TODO: check performance impact here
+        //holder.setIsRecyclable(true);
         //File class has a in build getName method
         holder.listTitle.setText(allFiles[position].getName());
         holder.listDate.setText(timeAgo.getTimeAgo(allFiles[position].lastModified()));
@@ -86,7 +86,6 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
             renameBtn = itemView.findViewById(R.id.rename_btn);
             shareBtn = itemView.findViewById(R.id.share_btn);
 
-            //able to click whole itemView
             itemView.setOnClickListener(this);
 
 
@@ -132,10 +131,8 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
             });
         }
 
-        //--- rename alert dialog ---
-        private void renameAlertDialog() {
 
-            // get alert_dialog.xml view
+        private void renameAlertDialog() {
             LayoutInflater layoutInflater = LayoutInflater.from(itemView.getContext());
             final View promptView = layoutInflater.inflate(R.layout.rename_alert_dialog, null);
 
@@ -153,10 +150,8 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
             Button renameAlertBtnPositive = promptView.findViewById(R.id.renameAlertBtnPositive);
             Button renameAlertBtnNegative = promptView.findViewById(R.id.renameAlertBtnNegative);
 
-            //doesn't cancel if tap alert dialog excluded area
             alertDialogBuilder.setCancelable(false);
 
-            //--- OK button OnClick ---
             renameAlertBtnPositive.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -164,74 +159,64 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
                     Editable renamedText = userInput.getText();
                     listTitle.setText(renamedText);
 
-                    //previous file name
                     File filepath = new File("/storage/emulated/0/Android/data/com.example.voicerecorder/files/" + allFiles[getAdapterPosition()].getName());
 
-                    //new renamed file
                     File renamedPath = new File("/storage/emulated/0/Android/data/com.example.voicerecorder/files/" + renamedText + ".mp3");
 
                     filepath.renameTo(renamedPath);
 
-                    //updating current audio file
                     allFiles[getAdapterPosition()] = renamedPath;
 
-                    //Log.d("AudioTAG", "Successful Rename: " + renamedPath.getPath());
                     Toast.makeText(itemView.getContext(), "File renamed", Toast.LENGTH_SHORT).show();
 
-                    alertDialogBuilder.dismiss(); //dismiss after button is clicled
+                    alertDialogBuilder.dismiss();
 
                 }
             });
-            //--- End OK button OnClick ---
 
-            //--- CANCEl button OnClick ---
             renameAlertBtnNegative.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     alertDialogBuilder.cancel();
                 }
             });
-            //---End CANCEl button OnClick ---
+
 
             alertDialogBuilder.show();
         }
-        //--- rename alert dialog ---
 
 
-        //--- delete alert dialog ---
+
+
         private void deleteAlertDialog() {
 
-            // get common_alert_dialog.xml view
             final LayoutInflater layoutInflater = LayoutInflater.from(itemView.getContext());
 
             final View promptView = layoutInflater.inflate(R.layout.common_alert_dialog, null);
 
             final AlertDialog alertDialogBuilder = new AlertDialog.Builder(itemView.getContext()).create();
 
-            // set common_alert_dialog.xml to alertdialog builder
+
             alertDialogBuilder.setView(promptView);
 
             Button alertBtnPositive = promptView.findViewById(R.id.commonAlertPosBtn);
             Button alertBtnNegative = promptView.findViewById(R.id.commonAlertNegBtn);
 
-            //doesn't cancel if tap alert dialog excluded area
             alertDialogBuilder.setCancelable(false);
 
             alertBtnPositive.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-                    //deleting the specified position audio file
                     allFiles[getAdapterPosition()].delete();
 
-                    //--- disabling visibility of the item after deleted ---
                     listImage.setVisibility(View.GONE);
                     listTitle.setVisibility(View.GONE);
                     listDate.setVisibility(View.GONE);
                     deleteBtn.setVisibility(View.GONE);
                     renameBtn.setVisibility(View.GONE);
                     shareBtn.setVisibility(View.GONE);
-                    //--- End disabling visibility of the item after deleted ---
+
 
                     Toast.makeText(v.getContext(), "File deleted", Toast.LENGTH_LONG).show();
 
@@ -253,11 +238,11 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
             alertDialogBuilder.show();
 
         }
-        //--- End delete alert dialog ---
+
 
         @Override
         public void onClick(View v) {
-            //getting current file and current position
+
             onItemListClick.onClickListener(allFiles[getAdapterPosition()], getAdapterPosition());
         }
 
