@@ -23,8 +23,7 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
 
     private File[] allFiles;
     private TimeAgo timeAgo;
-    private onItemListClick onItemListClick; //to use interface inside onClick method
-    //private com.google.android.gms.ads.AdSize AdSize;
+    private onItemListClick onItemListClick;
 
 
     public AudioListAdapter(File[] allFiles, onItemListClick onItemListClick) {
@@ -36,7 +35,6 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
     @Override
     public AudioViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        //inflating view
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_list_item, parent, false);
         timeAgo = new TimeAgo();
 
@@ -46,9 +44,6 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
     @Override
     public void onBindViewHolder(@NonNull AudioViewHolder holder, final int position) {
 
-
-        //holder.setIsRecyclable(true);
-        //File class has a in build getName method
         holder.listTitle.setText(allFiles[position].getName());
         holder.listDate.setText(timeAgo.getTimeAgo(allFiles[position].lastModified()));
         holder.renameFilename();
@@ -137,14 +132,13 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
             final View promptView = layoutInflater.inflate(R.layout.rename_alert_dialog, null);
 
 
-            //final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(itemView.getContext());
             final AlertDialog alertDialogBuilder = new AlertDialog.Builder(itemView.getContext()).create();
 
-            // set alert_dialog.xml to alertdialog builder
+
             alertDialogBuilder.setView(promptView);
 
             final EditText userInput = promptView.findViewById(R.id.rename_text);
-            //load current saved file name to the AlertDialog EditText
+
             userInput.setText(allFiles[getAdapterPosition()].getName());
 
             Button renameAlertBtnPositive = promptView.findViewById(R.id.renameAlertBtnPositive);
